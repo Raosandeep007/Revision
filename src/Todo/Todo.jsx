@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import 'Todo.css';
+import './Todo.css';
 
 export class Todo extends React.Component {
   constructor(props) {
@@ -69,35 +69,40 @@ export class Todo extends React.Component {
     return (
       <>
         <div>
-          <h1>Todo</h1>
-          <input
-            value={query}
-            onChange={this.handleChange}
-            type="text"
-            placeholder="Add Something"
-          />
-          <button onClick={this.handleAdd.bind(this)}>ADD TODO</button>
+          <div id="addtododiv">
+            <h1>Todo</h1>
+            <input
+              id="inputtodo"
+              value={query}
+              onChange={this.handleChange}
+              type="text"
+              placeholder="Add Something"
+            />
+            <button onClick={this.handleAdd.bind(this)}>ADD TODO</button>
+          </div>
           <div>
             {todo?.map((item) => (
               <div id="tododiv" key={item.id}>
-                {item.title}
+                <div id="titlediv">{item.title}</div>
                 <button onClick={this.handleDelete.bind(this, item.id)}>
                   DELETE
                 </button>
               </div>
             ))}
-            <button
-              disabled={this.state.page === 1 ? true : false}
-              onClick={() => this.setState({ page: this.state.page - 1 })}
-            >
-              Prev
-            </button>
-            <button
-              disabled={todo.length < 1 ? true : false}
-              onClick={() => this.setState({ page: this.state.page + 1 })}
-            >
-              Next
-            </button>
+            <div id="nextprevdiv">
+              <button
+                disabled={this.state.page === 1 ? true : false}
+                onClick={() => this.setState({ page: this.state.page - 1 })}
+              >
+                Prev
+              </button>{' '}
+              <button
+                disabled={todo.length < 1 ? true : false}
+                onClick={() => this.setState({ page: this.state.page + 1 })}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </>
