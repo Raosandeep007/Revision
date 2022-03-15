@@ -4,7 +4,7 @@ import { Counter } from './Counter/Counter';
 import { Todo } from './Todo/Todo';
 export default function App() {
   return (
-    <div>
+    <div id="maindiv">
       {/* <Counter title="Counter for my App" /> */}
       <Todo />
     </div>
