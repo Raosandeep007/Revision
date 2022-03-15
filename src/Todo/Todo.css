@@ -12,7 +12,9 @@
   word-wrap: break-word;
   overflow: scroll;
   height: 35px;
+  width: 240px;
   font-family: Bradley Hand, cursive;
+  border: 1px solid rebeccapurple;
 }
 #titlediv::-webkit-scrollbar {
   display: none;
@@ -23,7 +25,6 @@ button {
   border: 0;
   border-radius: 12px;
   color: #ffffff;
-  /* cursor: pointer; */
   display: inline-block;
   font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
@@ -40,7 +41,6 @@ button {
   touch-action: manipulation;
   white-space: nowrap;
   height: 30px;
-  /* cursor: not-allowed; */
 }
 
 #inputtodo {

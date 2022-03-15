@@ -88,6 +88,7 @@ export class Todo extends React.Component {
           <div id="displaydiv">
             {todo?.map((item) => (
               <div id="tododiv" key={item.id}>
+                <input type="checkbox" />
                 <div id="titlediv">{item.title}</div>
                 <button onClick={this.handleDelete.bind(this, item.id)}>
                   DELETE
@@ -106,9 +107,8 @@ export class Todo extends React.Component {
               &#8678; Prev
             </button>{' '}
             <button
-              disabled={todo.length <= 1 ? true : false}
-              // cursor={todo.length <= 1 ? "not-allowed" : "Pointer"}
-              style={{ cursor: todo.length <= 1 ? 'not-allowed' : 'Pointer' }}
+              disabled={todo.length < 1 ? true : false}
+              style={{ cursor: todo.length < 1 ? 'not-allowed' : 'Pointer' }}
               onClick={() => this.setState({ page: this.state.page + 1 })}
             >
               Next &#x21E8;
