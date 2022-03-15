@@ -51,20 +51,20 @@ export class Todo extends React.Component {
           {
             todo: res.data,
           },
-          () => console.log(this.state)
+          () => {}
         )
       );
   }
   componentDidMount() {
     this.handleGetTodos();
   }
-  ComponentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
       this.handleGetTodos();
     }
   }
   render() {
-    const { todo, query, page } = this.state;
+    const { todo, query } = this.state;
     return (
       <>
         <div>
@@ -94,10 +94,16 @@ export class Todo extends React.Component {
                 </button>
               </div>
             ))}
-            <button onClick={() => this.setState({ page: this.page - 1 })}>
+            <button
+              disabled={this.state.page === 1 ? true : false}
+              onClick={() => this.setState({ page: this.state.page - 1 })}
+            >
               Prev
             </button>
-            <button onClick={() => this.setState({ page: this.page + 1 })}>
+            <button
+              disabled={todo.length < 1 ? true : false}
+              onClick={() => this.setState({ page: this.state.page + 1 })}
+            >
               Next
             </button>
           </div>
