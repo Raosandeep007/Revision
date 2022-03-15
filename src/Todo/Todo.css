@@ -9,7 +9,7 @@
   border-radius: 10px;
 }
 #titlediv {
-  word-break: break-all;
+  word-wrap: break-word;
   overflow: scroll;
   height: 35px;
 }
