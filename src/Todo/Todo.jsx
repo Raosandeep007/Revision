@@ -30,6 +30,7 @@ export class Todo extends React.Component {
       .post('https://shadow-glittery-bosworth.glitch.me/todos', payload)
       .then((res) => {
         this.handleGetTodos();
+        alert(`${payload.title} Added`);
       });
   }
   handleDelete(id) {
@@ -52,7 +53,9 @@ export class Todo extends React.Component {
           {
             todo: res.data,
           },
-          () => {}
+          () => {
+            console.log(this.state.page);
+          }
         )
       );
   }
@@ -70,7 +73,7 @@ export class Todo extends React.Component {
       <>
         <div>
           <div id="addtododiv">
-            <h1>Todo</h1>
+            <h1 id="heading">ADD YOUR TODO</h1>
             <input
               id="inputtodo"
               value={query}
@@ -93,12 +96,17 @@ export class Todo extends React.Component {
           <div id="nextprevdiv">
             <button
               disabled={this.state.page === 1 ? true : false}
+              style={{
+                cursor: this.state.page === 1 ? 'not-allowed' : 'Pointer',
+              }}
               onClick={() => this.setState({ page: this.state.page - 1 })}
             >
               &#8678; Prev
             </button>{' '}
             <button
-              disabled={todo.length < 1 ? true : false}
+              disabled={todo.length <= 1 ? true : false}
+              // cursor={todo.length <= 1 ? "not-allowed" : "Pointer"}
+              style={{ cursor: todo.length <= 1 ? 'not-allowed' : 'Pointer' }}
               onClick={() => this.setState({ page: this.state.page + 1 })}
             >
               Next &#x21E8;
