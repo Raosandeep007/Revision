@@ -12,6 +12,7 @@
   word-wrap: break-word;
   overflow: scroll;
   height: 35px;
+  font-family: Bradley Hand, cursive;
 }
 #titlediv::-webkit-scrollbar {
   display: none;
