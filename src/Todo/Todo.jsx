@@ -30,7 +30,6 @@ export class Todo extends React.Component {
       .post('https://shadow-glittery-bosworth.glitch.me/todos', payload)
       .then((res) => {
         this.handleGetTodos();
-        alert(`${payload.title} Added`);
       });
   }
   handleDelete(id) {
@@ -45,9 +44,12 @@ export class Todo extends React.Component {
     const { page } = this.state;
 
     return axios
-      .get('https://shadow-glittery-bosworth.glitch.me/todos', {
-        params: { _limit: 5, _page: page },
-      })
+      .get(
+        'https://shadow-glittery-bosworth.glitch.me/todos?_sort=id&_order=desc',
+        {
+          params: { _limit: 5, _page: page },
+        }
+      )
       .then((res) =>
         this.setState(
           {
