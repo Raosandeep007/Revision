@@ -1,0 +1,7 @@
+#tododiv {
+  padding: 10;
+  margin: 2;
+  border: '1px solid black';
+  display: 'flex';
+  justify-content: 'space-between';
+}

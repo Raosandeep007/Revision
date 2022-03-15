@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-
+import 'Todo.css';
 export class Todo extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +44,7 @@ export class Todo extends React.Component {
 
     return axios
       .get('https://shadow-glittery-bosworth.glitch.me/todos', {
-        params: { _limit: 2, _page: page },
+        params: { _limit: 5, _page: page },
       })
       .then((res) =>
         this.setState(
@@ -78,16 +78,7 @@ export class Todo extends React.Component {
           <button onClick={this.handleAdd.bind(this)}>ADD TODO</button>
           <div>
             {todo?.map((item) => (
-              <div
-                key={item.id}
-                style={{
-                  padding: 10,
-                  margin: 2,
-                  border: '1px solid black',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                }}
-              >
+              <div id="tododiv" key={item.id}>
                 {item.title}
                 <button onClick={this.handleDelete.bind(this, item.id)}>
                   DELETE
