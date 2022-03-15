@@ -80,7 +80,7 @@ export class Todo extends React.Component {
             />
             <button onClick={this.handleAdd.bind(this)}>ADD TODO</button>
           </div>
-          <div>
+          <div id="displaydiv">
             {todo?.map((item) => (
               <div id="tododiv" key={item.id}>
                 <div id="titlediv">{item.title}</div>
@@ -89,20 +89,20 @@ export class Todo extends React.Component {
                 </button>
               </div>
             ))}
-            <div id="nextprevdiv">
-              <button
-                disabled={this.state.page === 1 ? true : false}
-                onClick={() => this.setState({ page: this.state.page - 1 })}
-              >
-                Prev
-              </button>{' '}
-              <button
-                disabled={todo.length < 1 ? true : false}
-                onClick={() => this.setState({ page: this.state.page + 1 })}
-              >
-                Next
-              </button>
-            </div>
+          </div>
+          <div id="nextprevdiv">
+            <button
+              disabled={this.state.page === 1 ? true : false}
+              onClick={() => this.setState({ page: this.state.page - 1 })}
+            >
+              &#8678; Prev
+            </button>{' '}
+            <button
+              disabled={todo.length < 1 ? true : false}
+              onClick={() => this.setState({ page: this.state.page + 1 })}
+            >
+              Next &#x21E8;
+            </button>
           </div>
         </div>
       </>

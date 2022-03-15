@@ -11,7 +11,7 @@
 #titlediv {
   word-break: break-all;
   overflow: scroll;
-  height: 50px;
+  height: 35px;
 }
 #titlediv::-webkit-scrollbar {
   display: none;
@@ -55,7 +55,7 @@ button-62:not([disabled]):hover {
 
 #inputtodo {
   height: 40px;
-  width: 300px;
+  width: 295px;
   border-radius: 10px;
   border: none;
 }
@@ -63,13 +63,13 @@ button-62:not([disabled]):hover {
 #nextprevdiv {
   padding-left: 15px;
   display: flex;
-  column-gap: 10px;
+  column-gap: 10%;
 }
 #addtododiv {
   line-height: 2px;
   display: grid;
   padding-left: 9px;
-  row-gap: 10px;
+  row-gap: 5px;
   margin: auto;
   width: 340px;
 }
@@ -108,4 +108,8 @@ button-62:not([disabled]):hover {
   white-space: nowrap;
   will-change: box-shadow, transform;
   font-size: 18px;
+}
+
+#displaydiv {
+  height: 350px;
 }
