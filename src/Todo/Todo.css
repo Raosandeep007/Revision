@@ -14,7 +14,6 @@
   height: 35px;
   width: 240px;
   font-family: Bradley Hand, cursive;
-  border: 1px solid rebeccapurple;
 }
 #titlediv::-webkit-scrollbar {
   display: none;

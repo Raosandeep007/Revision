@@ -13,12 +13,22 @@ export class Todo extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange = (e) => {
-    console.log(this);
     this.setState({
       query: e.target.value,
     });
   };
 
+  handleChecked(id, status) {
+    const payload = {
+      status: !status,
+    };
+
+    axios
+      .patch(`https://shadow-glittery-bosworth.glitch.me/todos/${id}`, payload)
+      .then((res) => {
+        this.handleGetTodos();
+      });
+  }
   // on mounting I want to diaplay all the data
   handleAdd() {
     const { query } = this.state;
@@ -55,9 +65,7 @@ export class Todo extends React.Component {
           {
             todo: res.data,
           },
-          () => {
-            console.log(this.state.page);
-          }
+          () => {}
         )
       );
   }
@@ -87,9 +95,27 @@ export class Todo extends React.Component {
           </div>
           <div id="displaydiv">
             {todo?.map((item) => (
-              <div id="tododiv" key={item.id}>
-                <input type="checkbox" />
-                <div id="titlediv">{item.title}</div>
+              <div
+                id="tododiv"
+                style={{
+                  color: item.status == true ? 'white' : 'black',
+                  backgroundColor: item.status == true ? 'black' : '',
+                }}
+                key={item.id}
+              >
+                <input
+                  type="checkbox"
+                  checked={item.status}
+                  onChange={this.handleChecked.bind(this, item.id, item.status)}
+                />
+                <div
+                  id="titlediv"
+                  style={{
+                    textDecoration: item.status == true ? 'line-through' : '',
+                  }}
+                >
+                  {item.title}
+                </div>
                 <button onClick={this.handleDelete.bind(this, item.id)}>
                   DELETE
                 </button>
