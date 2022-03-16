@@ -32,16 +32,24 @@ export class Todo extends React.Component {
   // on mounting I want to diaplay all the data
   handleAdd() {
     const { query } = this.state;
-    const payload = {
-      title: query,
-      status: false,
-    };
-    axios
-      .post('https://shadow-glittery-bosworth.glitch.me/todos', payload)
-      .then((res) => {
-        this.handleGetTodos();
-      });
+    if (query.length > 0) {
+      const payload = {
+        title: query,
+        status: false,
+      };
+      axios
+        .post('https://shadow-glittery-bosworth.glitch.me/todos', payload)
+        .then((res) => {
+          this.handleGetTodos();
+        });
+    } else {
+      alert('Nothing to add');
+    }
   }
+  // clearform(e) {
+  //   // e.preventDefault();
+  //   console.log('e', e);
+  // }
   handleDelete(id) {
     axios
       .delete(`https://shadow-glittery-bosworth.glitch.me/todos/${id}`)
@@ -50,9 +58,8 @@ export class Todo extends React.Component {
       })
       .catch((err) => console.error(err));
   }
-  handleGetTodos() {
+  handleGetTodos(e) {
     const { page } = this.state;
-
     return axios
       .get(
         'https://shadow-glittery-bosworth.glitch.me/todos?_sort=id&_order=desc',
@@ -65,18 +72,23 @@ export class Todo extends React.Component {
           {
             todo: res.data,
           },
+
           () => {}
         )
       );
   }
+
   componentDidMount() {
-    this.handleGetTodos();
+    setInterval(() => {
+      this.handleGetTodos();
+    }, 500);
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
       this.handleGetTodos();
     }
   }
+
   render() {
     const { todo, query } = this.state;
     return (
@@ -89,9 +101,16 @@ export class Todo extends React.Component {
               value={query}
               onChange={this.handleChange}
               type="text"
+              required
               placeholder="Add Something"
             />
-            <button onClick={this.handleAdd.bind(this)}>ADD TODO</button>
+            <button
+              onClick={(e) => {
+                this.handleAdd();
+              }}
+            >
+              ADD TODO
+            </button>
           </div>
           <div id="displaydiv">
             {todo?.map((item) => (
@@ -104,6 +123,7 @@ export class Todo extends React.Component {
                 key={item.id}
               >
                 <input
+                  id="checkbox"
                   type="checkbox"
                   checked={item.status}
                   onChange={this.handleChecked.bind(this, item.id, item.status)}
@@ -116,7 +136,10 @@ export class Todo extends React.Component {
                 >
                   {item.title}
                 </div>
-                <button onClick={this.handleDelete.bind(this, item.id)}>
+                <button
+                  id="deletebtn"
+                  onClick={this.handleDelete.bind(this, item.id)}
+                >
                   DELETE
                 </button>
               </div>
