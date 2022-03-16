@@ -11,8 +11,7 @@
 #titlediv {
   word-wrap: break-word;
   overflow: scroll;
-  height: 35px;
-  width: 240px;
+  height: 40px;
   font-family: Bradley Hand, cursive;
 }
 #titlediv::-webkit-scrollbar {
@@ -44,7 +43,7 @@ button {
 
 #inputtodo {
   height: 40px;
-  width: 295px;
+
   border-radius: 10px;
   border: none;
   font-family: Bradley Hand, cursive;
@@ -56,16 +55,15 @@ button {
   column-gap: 10%;
 }
 #addtododiv {
-  /* line-height: 2px; */
   display: grid;
   padding-left: 9px;
   row-gap: 5px;
   margin: auto;
-  width: 340px;
+  margin-right: 10px;
 }
 
 #addtododiv button {
-  width: 90%;
+  /* width: 90%; */
   height: 45px;
   align-items: center;
   appearance: none;
@@ -99,10 +97,10 @@ button {
   will-change: box-shadow, transform;
   font-size: 18px;
 }
-
+/* 
 #displaydiv {
   height: 350px;
-}
+} */
 
 #heading {
   background-image: linear-gradient(

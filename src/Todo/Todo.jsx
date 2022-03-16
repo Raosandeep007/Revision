@@ -57,7 +57,7 @@ export class Todo extends React.Component {
       .get(
         'https://shadow-glittery-bosworth.glitch.me/todos?_sort=id&_order=desc',
         {
-          params: { _limit: 5, _page: page },
+          params: { _limit: 3, _page: page },
         }
       )
       .then((res) =>
