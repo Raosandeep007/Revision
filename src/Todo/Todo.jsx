@@ -51,12 +51,14 @@ export class Todo extends React.Component {
   //   console.log('e', e);
   // }
   handleDelete(id) {
-    axios
-      .delete(`https://shadow-glittery-bosworth.glitch.me/todos/${id}`)
-      .then((res) => {
-        this.handleGetTodos();
-      })
-      .catch((err) => console.error(err));
+    if (window.confirm('are you sure you want to delete?')) {
+      axios
+        .delete(`https://shadow-glittery-bosworth.glitch.me/todos/${id}`)
+        .then((res) => {
+          this.handleGetTodos();
+        })
+        .catch((err) => console.error(err));
+    }
   }
   handleGetTodos(e) {
     const { page } = this.state;
