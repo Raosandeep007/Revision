@@ -81,9 +81,7 @@ export class Todo extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(() => {
-      this.handleGetTodos();
-    }, 500);
+    this.handleGetTodos();
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.page !== this.state.page) {
